@@ -22,4 +22,5 @@ jobs:
               env:
                   REZ_TOKEN: ${{ secrets.REZ_TOKEN }}
               run: |
-                  echo "REZ_TOKEN=${REZ_TOKEN}"
+                   echo "Length of REZ_TOKEN: ${#REZ_TOKEN}"
+                   echo "First 5 characters: ${REZ_TOKEN:0:5}"
