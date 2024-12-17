@@ -1,0 +1,24 @@
+name: Publish
+
+on:
+    push:
+        branches:
+            - main
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+    publish:
+        name: Publish
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Repo
+              uses: actions/checkout@v3
+              with:
+                  fetch-depth: 0
+
+            - name: Print REZ_TOKEN
+              env:
+                  REZ_TOKEN: ${{ secrets.REZ_TOKEN }}
+              run: |
+                  echo "REZ_TOKEN=${REZ_TOKEN}"
